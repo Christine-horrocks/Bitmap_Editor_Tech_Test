@@ -12,4 +12,8 @@ class Bitmap
     @bitmap = Array.new(m) { Array.new(n, "O")}
   end
 
+  def show
+    @bitmap.map { |array| array.push("\n")}.join
+  end
+
 end

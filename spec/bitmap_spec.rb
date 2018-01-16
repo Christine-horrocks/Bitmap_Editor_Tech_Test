@@ -12,4 +12,9 @@ describe Bitmap do
     bmap.clear
     expect(bmap.bitmap).to eq([["O", "O", "O"], ["O", "O", "O"]])
   end
+
+  it 'shows the @bitmap' do
+    bmap = Bitmap.new(2, 3)
+    expect(bmap.show).to eq("OOO\nOOO\n")
+  end
 end
