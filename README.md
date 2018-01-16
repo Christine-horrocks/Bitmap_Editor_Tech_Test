@@ -25,17 +25,28 @@ Then go to the command line and run the following command:
 This is an example of possible input and expected outcome of the program, when it is complete.
 
 Input File:
+
 I 5 6
+
 L 1 3 A
+
 V 2 3 6 W
+
 H 3 5 2 Z
+
 S
 
 
 Expected Output:
+
 OOOOO
+
 OOZZZ
+
 AWOOO
+
 OWOOO
+
 OWOOO
+
 OWOOO
