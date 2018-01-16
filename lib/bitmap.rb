@@ -16,4 +16,9 @@ class Bitmap
     @bitmap.map { |array| array.push("\n")}.join
   end
 
+  def pixel_change(x, y, c)
+    bmap = @bitmap
+    bmap[y-1][x-1] = c
+  end
+
 end
