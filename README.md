@@ -12,10 +12,30 @@ The input will come from a text file, which will contain a sequence of commands.
 - S - Show the contents of the current image
 
 
-# Running
+## Running
 To run the program, enter the desired commands to the file:
 `examples/show.txt`
 
 Then go to the command line and run the following command:
 
 `>bin/bitmap_editor examples/show.txt`
+
+## Example of Expected outcome
+
+This is an example of possible input and expected outcome of the program, when it is complete.
+
+Input File:
+I 5 6
+L 1 3 A
+V 2 3 6 W
+H 3 5 2 Z
+S
+
+
+Expected Output:
+OOOOO
+OOZZZ
+AWOOO
+OWOOO
+OWOOO
+OWOOO
