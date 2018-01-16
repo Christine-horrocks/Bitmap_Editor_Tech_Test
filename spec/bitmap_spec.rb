@@ -24,9 +24,9 @@ describe Bitmap do
     expect(bmap.bitmap).to eq([["O", "O", "O"], ["B", "O", "O"]])
   end
 
-  it 'changes a pixel colour' do
+  it 'changes a pixel colour can be shown' do
     bmap = Bitmap.new(2, 3)
     bmap.pixel_change(3, 2, "B")
-    expect(bmap.bitmap).to eq([["O", "O", "O"], ["O", "O", "B"]])
+    expect(bmap.show).to eq("OOO\nOOB\n")
   end
 end
