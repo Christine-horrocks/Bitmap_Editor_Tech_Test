@@ -13,7 +13,8 @@ class Bitmap
   end
 
   def show
-    @bitmap.map { |array| array.push("\n")}.join
+    bmap = @bitmap.map { |array| array.push("\n")}
+    bmap.reverse.join
   end
 
   def pixel_change(x, y, c)

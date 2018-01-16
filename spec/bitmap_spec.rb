@@ -27,6 +27,6 @@ describe Bitmap do
   it 'changes a pixel colour can be shown' do
     bmap = Bitmap.new(2, 3)
     bmap.pixel_change(3, 2, "B")
-    expect(bmap.show).to eq("OOO\nOOB\n")
+    expect(bmap.show).to eq("OOB\nOOO\n")
   end
 end
