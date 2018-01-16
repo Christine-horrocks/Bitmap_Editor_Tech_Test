@@ -29,4 +29,10 @@ describe Bitmap do
     bmap.pixel_change(3, 2, "B")
     expect(bmap.show).to eq("OOO\nOOB\n")
   end
+
+  it 'changes a vertical line of pixels colour' do
+    bmap = Bitmap.new(2, 3)
+    bmap.vertical_change(1, 1, 2, "B")
+    expect(bmap.bitmap).to eq([["B", "O", "O"], ["B", "O", "O"]])
+  end
 end
