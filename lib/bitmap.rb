@@ -3,8 +3,8 @@ class Bitmap
   attr_reader :m, :n
 
   def initialize(m, n, c = "O")
-    raise 'Your m length must be between 1 - 250' if m > 250 || m < 1
-    raise 'Your n depth must be between 1 - 250' if n > 250 || n < 1
+    check_m(m)
+    check_n(n)
     @m = m
     @n = n
     @bitmap = Array.new(n) { Array.new(m, c)}
@@ -43,6 +43,14 @@ class Bitmap
   end
 
   private
+
+  def check_m(m)
+    raise 'Your m length must be between 1 - 250' if m > 250 || m < 1
+  end
+
+  def check_n(n)
+    raise 'Your n depth must be between 1 - 250' if n > 250 || n < 1
+  end
 
   def check_x(x)
     raise 'Your x coordinate must be an integer' if x % 1 != 0
