@@ -19,7 +19,7 @@ class Bitmap
   def pixel_change(x, y, c)
     check_x(x)
     check_y(y)
-    @bitmap[y-1][x-1] = c
+    @bitmap[y-1][x-1] = c.upcase
   end
 
   def vertical_change(x, y1, y2, c)
@@ -27,7 +27,7 @@ class Bitmap
     check_y1(y1)
     check_y2(y2)
     (y1..y2).each do |e|
-      @bitmap[e-1][x-1] = c
+      @bitmap[e-1][x-1] = c.upcase
     end
   end
 
@@ -36,7 +36,7 @@ class Bitmap
     check_x2(x2)
     check_y(y)
     (x1..x2).each do |e|
-      @bitmap[y-1][e-1] = c
+      @bitmap[y-1][e-1] = c.upcase
     end
   end
 

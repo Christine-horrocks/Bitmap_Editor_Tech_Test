@@ -40,6 +40,12 @@ describe Bitmap do
     expect(bmap.show).to eq("OOO\nOOB\n")
   end
 
+  it 'colour represented by capital letter' do
+    bmap = Bitmap.new(3, 2)
+    bmap.pixel_change(1, 2, "b")
+    expect(bmap.bitmap).to eq([["O", "O", "O"], ["B", "O", "O"]])
+  end
+
   it 'changes a vertical line of pixels colour' do
     bmap = Bitmap.new(3, 2)
     bmap.vertical_change(1, 1, 2, "B")
@@ -59,6 +65,12 @@ describe Bitmap do
   it 'raises an error if y2 out of range' do
     bmap = Bitmap.new(3, 2)
     expect {bmap.vertical_change(3, 1, 4, "B")}.to raise_error 'Your y2 coordinate is out of range'
+  end
+
+  it 'colour represented by capital letter' do
+    bmap = Bitmap.new(3, 2)
+    bmap.vertical_change(1, 1, 2, "b")
+    expect(bmap.bitmap).to eq([["B", "O", "O"], ["B", "O", "O"]])
   end
 
   it 'changes a horizontal line of pixels colour' do
@@ -81,5 +93,11 @@ describe Bitmap do
     bmap = Bitmap.new(3, 2)
     expect {bmap.horizontal_change(1, 2, 4, "B")}.to raise_error 'Your y coordinate is out of range'
   end
+
+    it 'colour represented by capital letter' do
+      bmap = Bitmap.new(3, 2)
+      bmap.horizontal_change(1, 3, 1,"b")
+      expect(bmap.bitmap).to eq([["B", "B", "B"], ["O", "O", "O"]])
+    end
 
 end
