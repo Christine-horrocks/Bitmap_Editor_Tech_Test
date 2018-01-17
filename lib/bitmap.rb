@@ -48,23 +48,27 @@ class Bitmap
   end
 
   def check_y(y)
-        raise 'Your y coordinate must be an integer' if y % 1 != 0
+    raise 'Your y coordinate must be an integer' if y % 1 != 0
     raise 'Your y coordinate is out of range' if y > @n || y < 1
   end
 
   def check_x1(x1)
+    raise 'Your x1 coordinate must be an integer' if x1 % 1 != 0
     raise 'Your x1 coordinate is out of range' if x1 > @m || x1 < 1
   end
 
   def check_x2(x2)
+    raise 'Your x2 coordinate must be an integer' if x2 % 1 != 0
     raise 'Your x2 coordinate is out of range' if x2 > @m || x2 < 1
   end
 
   def check_y1(y1)
+    raise 'Your y1 coordinate must be an integer' if y1 % 1 != 0
     raise 'Your y1 coordinate is out of range' if y1 > @n || y1 < 1
   end
 
   def check_y2(y2)
+    raise 'Your y2 coordinate must be an integer' if y2 % 1 != 0
     raise 'Your y2 coordinate is out of range' if y2 > @n || y2 < 1
   end
 

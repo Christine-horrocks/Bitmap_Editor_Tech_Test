@@ -62,14 +62,29 @@ describe Bitmap do
     expect(bmap.bitmap).to eq([["B", "O", "O"], ["B", "O", "O"]])
   end
 
+  it 'raises an error if x not integer' do
+    bmap = Bitmap.new(3, 2)
+    expect {bmap.vertical_change("p", 1, 2, "B")}.to raise_error 'Your x coordinate must be an integer'
+  end
+
   it 'raises an error if x out of range' do
     bmap = Bitmap.new(3, 2)
     expect {bmap.vertical_change(4, 1, 2, "B")}.to raise_error 'Your x coordinate is out of range'
   end
 
+  it 'raises an error if y1 not integer' do
+    bmap = Bitmap.new(3, 2)
+    expect {bmap.vertical_change(3, "p", 1, "B")}.to raise_error 'Your y1 coordinate must be an integer'
+  end
+
   it 'raises an error if y1 out of range' do
     bmap = Bitmap.new(3, 2)
     expect {bmap.vertical_change(3, 4, 1, "B")}.to raise_error 'Your y1 coordinate is out of range'
+  end
+
+  it 'raises an error if y2 not integer' do
+    bmap = Bitmap.new(3, 2)
+    expect {bmap.vertical_change(3, 1, "p", "B")}.to raise_error 'Your y2 coordinate must be an integer'
   end
 
   it 'raises an error if y2 out of range' do
@@ -89,14 +104,29 @@ describe Bitmap do
     expect(bmap.bitmap).to eq([["B", "B", "B"], ["O", "O", "O"]])
   end
 
+  it 'raises an error if x1 not integer' do
+    bmap = Bitmap.new(3, 2)
+    expect {bmap.horizontal_change("p", 2, 1, "B")}.to raise_error 'Your x1 coordinate must be an integer'
+  end
+
   it 'raises an error if x1 out of range' do
     bmap = Bitmap.new(3, 2)
     expect {bmap.horizontal_change(4, 1, 2, "B")}.to raise_error 'Your x1 coordinate is out of range'
   end
 
+  it 'raises an error if x2 not integer' do
+    bmap = Bitmap.new(3, 2)
+    expect {bmap.horizontal_change(2, "p", 1, "B")}.to raise_error 'Your x2 coordinate must be an integer'
+  end
+
   it 'raises an error if x2 out of range' do
     bmap = Bitmap.new(3, 2)
     expect {bmap.horizontal_change(1, 4, 2, "B")}.to raise_error 'Your x2 coordinate is out of range'
+  end
+
+  it 'raises an error if y not integer' do
+    bmap = Bitmap.new(3, 2)
+    expect {bmap.horizontal_change(1, 2, "p", "B")}.to raise_error 'Your y coordinate must be an integer'
   end
 
   it 'raises an error if y out of range' do
