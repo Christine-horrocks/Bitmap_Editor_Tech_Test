@@ -18,6 +18,7 @@ class Bitmap
 
   def pixel_change(x, y, c)
     raise 'Your x coordinate is out of range' if x > @m || x < 1
+    raise 'Your y coordinate is out of range' if y > @n || y < 1
     @bitmap[y-1][x-1] = c
   end
 

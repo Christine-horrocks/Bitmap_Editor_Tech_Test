@@ -47,4 +47,9 @@ describe Bitmap do
     expect {bmap.pixel_change(4, 2, "B")}.to raise_error 'Your x coordinate is out of range'
   end
 
+  it 'raises an error if y out of range' do
+    bmap = Bitmap.new(3, 2)
+    expect {bmap.pixel_change(3, 3, "B")}.to raise_error 'Your y coordinate is out of range'
+  end
+
 end
