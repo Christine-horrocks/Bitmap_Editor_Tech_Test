@@ -7,6 +7,22 @@ describe Bitmap do
     expect(bmap.bitmap).to eq([["O", "O", "O"], ["O", "O", "O"]])
   end
 
+  it 'raises an error if m is under 1' do
+    expect {Bitmap.new(0, 3)}.to raise_error 'Your m length must be between 1 - 250'
+  end
+
+  it 'raises an error if m over 250' do
+    expect {Bitmap.new(255, 3)}.to raise_error 'Your m length must be between 1 - 250'
+  end
+
+  it 'raises an error if n is under 1' do
+    expect {Bitmap.new(3, 0)}.to raise_error 'Your n depth must be between 1 - 250'
+  end
+
+  it 'raises an error if n over 250' do
+    expect {Bitmap.new(3, 255)}.to raise_error 'Your n depth must be between 1 - 250'
+  end
+
   context "clear" do
 
     it 'resets the @bitmap' do

@@ -3,6 +3,8 @@ class Bitmap
   attr_reader :m, :n
 
   def initialize(m, n, c = "O")
+    raise 'Your m length must be between 1 - 250' if m > 250 || m < 1
+    raise 'Your n depth must be between 1 - 250' if n > 250 || n < 1
     @m = m
     @n = n
     @bitmap = Array.new(n) { Array.new(m, c)}
