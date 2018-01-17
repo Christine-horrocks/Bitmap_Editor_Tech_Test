@@ -26,4 +26,10 @@ class Bitmap
     end
   end
 
+  def horizontal_change(x1, x2, y, c)
+    (x1..x2).each do |e|
+      @bitmap[y-1][e-1] = c
+    end 
+  end
+
 end

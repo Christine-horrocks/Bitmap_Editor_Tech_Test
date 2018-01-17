@@ -36,6 +36,11 @@ describe Bitmap do
     expect(bmap.bitmap).to eq([["B", "O", "O"], ["B", "O", "O"]])
   end
 
+  it 'chnages a horizontal line of pixels colour' do
+    bmap = Bitmap.new(3, 2)
+    bmap.horizontal_change(1, 3, 1,"B")
+    expect(bmap.bitmap).to eq([["B", "B", "B"], ["O", "O", "O"]])
+  end
 
 
 
