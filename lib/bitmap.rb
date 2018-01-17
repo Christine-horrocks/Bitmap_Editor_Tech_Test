@@ -23,6 +23,9 @@ class Bitmap
   end
 
   def vertical_change(x, y1, y2, c)
+    raise 'Your x coordinate is out of range' if x > @m || x < 1
+    raise 'Your y1 coordinate is out of range' if y1 > @n || y1 < 1
+    raise 'Your y2 coordinate is out of range' if y2 > @n || y2 < 1
     (y1..y2).each do |e|
       @bitmap[e-1][x-1] = c
     end
