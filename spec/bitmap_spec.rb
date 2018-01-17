@@ -24,9 +24,19 @@ describe Bitmap do
     expect(bmap.bitmap).to eq([["O", "O", "O"], ["B", "O", "O"]])
   end
 
+  it 'raises an error if x not integer' do
+    bmap = Bitmap.new(3, 2)
+    expect {bmap.pixel_change("p", 2, "B")}.to raise_error 'Your x coordinate must be an integer'
+  end
+
   it 'raises an error if x out of range' do
     bmap = Bitmap.new(3, 2)
     expect {bmap.pixel_change(4, 2, "B")}.to raise_error 'Your x coordinate is out of range'
+  end
+
+  it 'raises an error if y not integer' do
+    bmap = Bitmap.new(3, 2)
+    expect {bmap.pixel_change(1, "p", "B")}.to raise_error 'Your y coordinate must be an integer'
   end
 
   it 'raises an error if y out of range' do
