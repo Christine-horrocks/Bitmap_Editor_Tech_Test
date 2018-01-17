@@ -17,13 +17,15 @@ class Bitmap
   end
 
   def pixel_change(x, y, c)
-    raise 'Your x coordinate is out of range' if x > @m || x < 1
+    check_x(x)
+    # raise 'Your x coordinate is out of range' if x > @m || x < 1
     raise 'Your y coordinate is out of range' if y > @n || y < 1
     @bitmap[y-1][x-1] = c
   end
 
   def vertical_change(x, y1, y2, c)
-    raise 'Your x coordinate is out of range' if x > @m || x < 1
+    check_x(x)
+    # raise 'Your x coordinate is out of range' if x > @m || x < 1
     raise 'Your y1 coordinate is out of range' if y1 > @n || y1 < 1
     raise 'Your y2 coordinate is out of range' if y2 > @n || y2 < 1
     (y1..y2).each do |e|
@@ -32,9 +34,18 @@ class Bitmap
   end
 
   def horizontal_change(x1, x2, y, c)
+    raise 'Your x1 coordinate is out of range' if x1 > @m || x1 < 1
+    raise 'Your x2 coordinate is out of range' if x2 > @m || x2 < 1
+    raise 'Your y coordinate is out of range' if y > @n || y < 1
     (x1..x2).each do |e|
       @bitmap[y-1][e-1] = c
     end
+  end
+
+  private
+
+  def check_x(x)
+    raise 'Your x coordinate is out of range' if x > @m || x < 1
   end
 
 end

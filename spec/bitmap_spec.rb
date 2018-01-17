@@ -67,5 +67,19 @@ describe Bitmap do
     expect(bmap.bitmap).to eq([["B", "B", "B"], ["O", "O", "O"]])
   end
 
+  it 'raises an error if x1 out of range' do
+    bmap = Bitmap.new(3, 2)
+    expect {bmap.horizontal_change(4, 1, 2, "B")}.to raise_error 'Your x1 coordinate is out of range'
+  end
+
+  it 'raises an error if x2 out of range' do
+    bmap = Bitmap.new(3, 2)
+    expect {bmap.horizontal_change(1, 4, 2, "B")}.to raise_error 'Your x2 coordinate is out of range'
+  end
+
+  it 'raises an error if y out of range' do
+    bmap = Bitmap.new(3, 2)
+    expect {bmap.horizontal_change(1, 2, 4, "B")}.to raise_error 'Your y coordinate is out of range'
+  end
 
 end
