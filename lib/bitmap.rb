@@ -17,6 +17,7 @@ class Bitmap
   end
 
   def pixel_change(x, y, c)
+    raise 'Your x coordinate is out of range' if x > @m || x < 1
     @bitmap[y-1][x-1] = c
   end
 
@@ -29,7 +30,7 @@ class Bitmap
   def horizontal_change(x1, x2, y, c)
     (x1..x2).each do |e|
       @bitmap[y-1][e-1] = c
-    end 
+    end
   end
 
 end

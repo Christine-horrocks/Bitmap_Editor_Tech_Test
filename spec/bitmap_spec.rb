@@ -36,12 +36,15 @@ describe Bitmap do
     expect(bmap.bitmap).to eq([["B", "O", "O"], ["B", "O", "O"]])
   end
 
-  it 'chnages a horizontal line of pixels colour' do
+  it 'changes a horizontal line of pixels colour' do
     bmap = Bitmap.new(3, 2)
     bmap.horizontal_change(1, 3, 1,"B")
     expect(bmap.bitmap).to eq([["B", "B", "B"], ["O", "O", "O"]])
   end
 
-
+  it 'raises an error if x out of range' do
+    bmap = Bitmap.new(3, 2)
+    expect {bmap.pixel_change(4, 2, "B")}.to raise_error 'Your x coordinate is out of range'
+  end
 
 end
