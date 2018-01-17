@@ -45,10 +45,12 @@ class Bitmap
   private
 
   def check_m(m)
+    raise 'Your m coordinate must be an integer' if m % 1 != 0
     raise 'Your m length must be between 1 - 250' if m > 250 || m < 1
   end
 
   def check_n(n)
+    raise 'Your n coordinate must be an integer' if n % 1 != 0
     raise 'Your n depth must be between 1 - 250' if n > 250 || n < 1
   end
 

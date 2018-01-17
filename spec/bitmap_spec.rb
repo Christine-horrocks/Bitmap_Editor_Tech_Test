@@ -2,25 +2,37 @@ require "bitmap"
 
 describe Bitmap do
 
-  it 'insantiates @bitmap with input dimentions' do
-    bmap = Bitmap.new(3, 2)
-    expect(bmap.bitmap).to eq([["O", "O", "O"], ["O", "O", "O"]])
-  end
+  context "insantiation" do
 
-  it 'raises an error if m is under 1' do
-    expect {Bitmap.new(0, 3)}.to raise_error 'Your m length must be between 1 - 250'
-  end
+    it 'insantiates @bitmap with input dimentions' do
+      bmap = Bitmap.new(3, 2)
+      expect(bmap.bitmap).to eq([["O", "O", "O"], ["O", "O", "O"]])
+    end
 
-  it 'raises an error if m over 250' do
-    expect {Bitmap.new(255, 3)}.to raise_error 'Your m length must be between 1 - 250'
-  end
+    it 'raises an error if m not integer' do
+      expect {Bitmap.new("p", 3)}.to raise_error 'Your m coordinate must be an integer'
+    end
 
-  it 'raises an error if n is under 1' do
-    expect {Bitmap.new(3, 0)}.to raise_error 'Your n depth must be between 1 - 250'
-  end
+    it 'raises an error if m is under 1' do
+      expect {Bitmap.new(0, 3)}.to raise_error 'Your m length must be between 1 - 250'
+    end
 
-  it 'raises an error if n over 250' do
-    expect {Bitmap.new(3, 255)}.to raise_error 'Your n depth must be between 1 - 250'
+    it 'raises an error if m over 250' do
+      expect {Bitmap.new(255, 3)}.to raise_error 'Your m length must be between 1 - 250'
+    end
+
+    it 'raises an error if n not integer' do
+      expect {Bitmap.new(3, "p")}.to raise_error 'Your n coordinate must be an integer'
+    end
+
+    it 'raises an error if n is under 1' do
+      expect {Bitmap.new(3, 0)}.to raise_error 'Your n depth must be between 1 - 250'
+    end
+
+    it 'raises an error if n over 250' do
+      expect {Bitmap.new(3, 255)}.to raise_error 'Your n depth must be between 1 - 250'
+    end
+
   end
 
   context "clear" do
