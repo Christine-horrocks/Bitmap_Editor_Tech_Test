@@ -1,3 +1,5 @@
+require_relative "bitmap"
+
 class BitmapEditor
   attr_accessor :bitmap
   def initialize
