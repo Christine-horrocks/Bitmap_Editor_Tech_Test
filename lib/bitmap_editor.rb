@@ -1,5 +1,5 @@
 class BitmapEditor
-
+  attr_accessor :bitmap
   def initialize
     @bitmap = Bitmap.new(3,2)
   end
@@ -12,17 +12,13 @@ class BitmapEditor
       case line[0].upcase
       when "S"
           print @bitmap.show
+      when "C"
+        @bitmap.clear
       else
           puts 'unrecognised command :('
       end
     end
   end
 
-  # def s
-  #    print @bitmap.show
-  # end
-  #
-  # def c
-  #   @bitmap.clear
-  # end
+
 end
