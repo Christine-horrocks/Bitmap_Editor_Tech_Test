@@ -18,11 +18,11 @@ class BitmapEditor
     end
   end
 
-  def s
-     print @bitmap.show
-  end
-
-  def c
-    @bitmap.clear
-  end
+  # def s
+  #    print @bitmap.show
+  # end
+  #
+  # def c
+  #   @bitmap.clear
+  # end
 end

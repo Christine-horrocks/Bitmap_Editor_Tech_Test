@@ -1,16 +1,17 @@
 class PracticeEditor
-
+  attr_accessor :lines
+  
   def initialize
     @bitmap = Bitmap.new(3,2)
+    @lines = []
   end
 
   def run
-    lines = ["S"]
-    lines.each do |line|
+    @lines.each do |line|
       line = line.chomp
       case line
       when 'S'
-          puts "There is no image"
+          print @bitmap.show
       else
           puts 'unrecognised command :('
       end
