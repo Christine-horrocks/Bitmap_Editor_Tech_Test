@@ -3,7 +3,15 @@ require "bitmap"
 
 describe BitmapEditor do
 
-  it "instantiates a bitmap" do
+  it 'indicates if command letter not valid' do
+    editor = BitmapEditor.new
+    filename = "show.txt"
+    content = ["P"]
+    allow(File).to receive(:open).with(filename).and_return(content)
+    expect { editor.run("show.txt") }.to output("unrecognised command :(\n").to_stdout
+  end
+
+  it "instantiates a bitmap with command I" do
     editor = BitmapEditor.new
     filename = "show.txt"
     content = ["I 2 3"]
@@ -12,7 +20,7 @@ describe BitmapEditor do
     expect(editor.bitmap.bitmap).to eq([["O", "O"], ["O", "O"], ["O", "O"]])
   end
 
-  it 'shows the bit map with command S' do
+  it 'shows the bitmap with command S' do
     editor = BitmapEditor.new
     filename = "show.txt"
     content = ["I 3 2", "S"]
@@ -28,21 +36,22 @@ describe BitmapEditor do
     expect { editor.run("show.txt") }.to output("OOO\nOOO\n").to_stdout
   end
 
-  it 'raises an error if command letter not valid' do
-    editor = BitmapEditor.new
-    filename = "show.txt"
-    content = ["P"]
-    allow(File).to receive(:open).with(filename).and_return(content)
-    expect { editor.run("show.txt") }.to output("unrecognised command :(\n").to_stdout
-  end
-
-  it "clears the bitmap" do
+  it "clears the bitmap with command C" do
     editor = BitmapEditor.new
     filename = "show.txt"
     content = ["I 3 2", "C"]
     allow(File).to receive(:open).with(filename).and_return(content)
     editor.run("show.txt")
     expect(editor.bitmap.bitmap).to eq([["O", "O", "O"], ["O", "O", "O"]])
+  end
+
+  it "colours a pixel with command L" do
+    editor = BitmapEditor.new
+    filename = "show.txt"
+    content = ["I 3 2", "L 2 2 B"]
+    allow(File).to receive(:open).with(filename).and_return(content)
+    editor.run("show.txt")
+    expect(editor.bitmap.bitmap).to eq([["O", "O", "O"], ["O", "B", "O"]])
   end
 
 end

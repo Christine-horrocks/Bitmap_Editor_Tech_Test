@@ -16,6 +16,8 @@ class BitmapEditor
           print @bitmap.show
       when "C"
         @bitmap.clear
+      when "L"
+        @bitmap.pixel_change(line[1].to_i, line[2].to_i, line[3])
       else
           puts 'unrecognised command :('
       end
