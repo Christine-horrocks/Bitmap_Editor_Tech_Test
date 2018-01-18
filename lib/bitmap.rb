@@ -84,5 +84,4 @@ class Bitmap
     raise 'Your y2 coordinate is out of range' if y2 > @n || y2 < 1
   end
 
-
 end

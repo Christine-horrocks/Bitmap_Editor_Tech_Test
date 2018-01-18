@@ -1,13 +1,12 @@
-class BitmapEditor
+class PracticeEditor
 
   def initialize
     @bitmap = Bitmap.new(3,2)
   end
 
-  def run(file)
-    # return puts "please provide correct file" if file.nil? || !File.exists?(file)
-
-    File.open(file).each do |line|
+  def run
+    lines = ["S"]
+    lines.each do |line|
       line = line.chomp
       case line
       when 'S'
@@ -18,11 +17,11 @@ class BitmapEditor
     end
   end
 
-  def s
-     print @bitmap.show
-  end
-
-  def c
-    @bitmap.clear
-  end
+  # def s
+  #    print @bitmap.show
+  # end
+  #
+  # def c
+  #   @bitmap.clear
+  # end
 end
