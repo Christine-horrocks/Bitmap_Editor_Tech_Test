@@ -1,7 +1,7 @@
 class BitmapEditor
   attr_accessor :bitmap
   def initialize
-    @bitmap = Bitmap.new(3,2)
+    @bitmap = nil
   end
 
   def run(file)
@@ -10,6 +10,8 @@ class BitmapEditor
     File.open(file).each do |line|
       line = line.chomp.scan /\w/
       case line[0].upcase
+      when "I"
+        @bitmap = Bitmap.new(line[1].to_i, line[2].to_i)
       when "S"
           print @bitmap.show
       when "C"
