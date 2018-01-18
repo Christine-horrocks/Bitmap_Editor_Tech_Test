@@ -11,7 +11,7 @@ describe BitmapEditor do
     expect { editor.run("show.txt") }.to output("unrecognised command :(\n").to_stdout
   end
 
-  it "instantiates a bitmap with command I" do
+  it 'instantiates a bitmap with command I' do
     editor = BitmapEditor.new
     filename = "show.txt"
     content = ["I 2 3"]
@@ -36,7 +36,7 @@ describe BitmapEditor do
     expect { editor.run("show.txt") }.to output("OOO\nOOO\n").to_stdout
   end
 
-  it "clears the bitmap with command C" do
+  it 'clears the bitmap with command C' do
     editor = BitmapEditor.new
     filename = "show.txt"
     content = ["I 3 2", "C"]
@@ -45,13 +45,39 @@ describe BitmapEditor do
     expect(editor.bitmap.bitmap).to eq([["O", "O", "O"], ["O", "O", "O"]])
   end
 
-  it "colours a pixel with command L" do
+  it 'colours a pixel with command L' do
     editor = BitmapEditor.new
     filename = "show.txt"
     content = ["I 3 2", "L 2 2 B"]
     allow(File).to receive(:open).with(filename).and_return(content)
     editor.run("show.txt")
     expect(editor.bitmap.bitmap).to eq([["O", "O", "O"], ["O", "B", "O"]])
+  end
+
+  it 'colours a vertical with command V' do
+    editor = BitmapEditor.new
+    filename = "show.txt"
+    content = ["I 3 3", "V 2 1 3 B"]
+    allow(File).to receive(:open).with(filename).and_return(content)
+    editor.run("show.txt")
+    expect(editor.bitmap.bitmap).to eq([["O", "B", "O"], ["O", "B", "O"], ["O", "B", "O"]])
+  end
+
+  it 'colours a horizontal with command H' do
+    editor = BitmapEditor.new
+    filename = "show.txt"
+    content = ["I 3 2", "H 1 2 2 B"]
+    allow(File).to receive(:open).with(filename).and_return(content)
+    editor.run("show.txt")
+    expect(editor.bitmap.bitmap).to eq([["O", "O", "O"], ["B", "B", "O"]])
+  end
+
+  it 'raises and error if there is no bitmap' do
+    editor = BitmapEditor.new
+    filename = "show.txt"
+    content = ["H 1 2 2 B"]
+    allow(File).to receive(:open).with(filename).and_return(content)
+    expect {editor.run("show.txt")}.to raise_error 'You need to create a bitmap first'
   end
 
 end
