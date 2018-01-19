@@ -106,6 +106,12 @@ describe Bitmap do
       expect(@bmap.bitmap).to eq([["B", "O", "O"], ["B", "O", "O"]])
     end
 
+    it 'works even if y1 > y2' do
+      bmap = Bitmap.new(3, 2)
+      bmap.vertical_change(1, 2, 1, "B")
+      expect(bmap.bitmap).to eq([["B", "O", "O"], ["B", "O", "O"]])
+    end
+
     it 'raises an error if x not integer' do
       expect {@bmap.vertical_change("p", 1, 2, "B")}.to raise_error 'Your x coordinate must be an integer'
     end
@@ -131,8 +137,9 @@ describe Bitmap do
     end
 
     it 'colour represented by capital letter' do
-      @bmap.vertical_change(1, 1, 2, "b")
-      expect(@bmap.bitmap).to eq([["B", "O", "O"], ["B", "O", "O"]])
+      bmap = Bitmap.new(3, 2)
+      bmap.vertical_change(1, 1, 2, "b")
+      expect(bmap.bitmap).to eq([["B", "O", "O"], ["B", "O", "O"]])
     end
 
   end
@@ -152,8 +159,14 @@ describe Bitmap do
       expect {@bmap.horizontal_change("p", 2, 1, "B")}.to raise_error 'Your x1 coordinate must be an integer'
     end
 
+    it 'works even if x1 > x2' do
+      bmap = Bitmap.new(3, 2)
+      bmap.horizontal_change(3, 1, 1,"B")
+      expect(bmap.bitmap).to eq([["B", "B", "B"], ["O", "O", "O"]])
+    end
+
     it 'raises an error if x1 out of range' do
-      expect {@bmap.horizontal_change(4, 1, 2, "B")}.to raise_error 'Your x1 coordinate is out of range'
+      expect {@bmap.horizontal_change(4, 5, 2, "B")}.to raise_error 'Your x1 coordinate is out of range'
     end
 
     it 'raises an error if x2 not integer' do
@@ -173,8 +186,9 @@ describe Bitmap do
     end
 
     it 'colour represented by capital letter' do
-      @bmap.horizontal_change(1, 3, 1,"b")
-      expect(@bmap.bitmap).to eq([["B", "B", "B"], ["O", "O", "O"]])
+      bmap = Bitmap.new(3, 2)
+      bmap.horizontal_change(1, 3, 1,"b")
+      expect(bmap.bitmap).to eq([["B", "B", "B"], ["O", "O", "O"]])
     end
 
   end

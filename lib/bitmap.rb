@@ -28,16 +28,18 @@ class Bitmap
     check_x(x)
     check_y1(y1)
     check_y2(y2)
-    (y1..y2).each do |e|
+    y_order = [y1, y2].sort
+    (y_order[0]..y_order[1]).each do |e|
       @bitmap[e-1][x-1] = c.upcase
     end
   end
 
   def horizontal_change(x1, x2, y, c)
-    check_x1(x1)
+    check_x1(x1, x2)
     check_x2(x2)
     check_y(y)
-    (x1..x2).each do |e|
+    x_order = [x1, x2].sort
+    (x_order[0]..x_order[1]).each do |e|
       @bitmap[y-1][e-1] = c.upcase
     end
   end
@@ -64,7 +66,7 @@ class Bitmap
     raise 'Your y coordinate is out of range' if y > @n || y < 1
   end
 
-  def check_x1(x1)
+  def check_x1(x1, x2)
     raise 'Your x1 coordinate must be an integer' if x1 % 1 != 0
     raise 'Your x1 coordinate is out of range' if x1 > @m || x1 < 1
   end
