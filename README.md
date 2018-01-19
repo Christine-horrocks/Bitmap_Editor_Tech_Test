@@ -14,6 +14,7 @@ The input will come from a text file, which will contain a sequence of commands.
 
 ## Running
 To run the program, enter the desired commands to the file:
+
 `examples/show.txt`
 
 Then go to the command line and run the following command:
